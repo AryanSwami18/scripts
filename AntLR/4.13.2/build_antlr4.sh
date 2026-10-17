@@ -283,7 +283,7 @@ function installAdditionalDependencies() {
   "sles-15.6")
     printf -- "Installing additional dependencies for %s %s on %s \n" "$PACKAGE_NAME" "$PACKAGE_VERSION" "$DISTRO"
     sudo zypper install -y unzip xz xz-devel libuuid-devel curl wget git make diffutils gcc13 gcc13-c++ \
-    python cmake clang13 gawk gdbm-devel libbz2-devel libdb-4_8-devel libffi-devel libnsl-devel libopenssl-devel \
+    python cmake clang7 gawk gdbm-devel libbz2-devel libdb-4_8-devel libffi-devel libnsl-devel libopenssl-devel \
     libuuid-devel make ncurses-devel readline-devel sqlite3-devel tar tk-devel zlib-devel gzip
 
     #switch to GCC 13
