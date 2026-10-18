@@ -24,7 +24,6 @@ GO_DEFAULT="$SOURCE_ROOT/go"
 NODEJS_VERSION='v16.17.1'
 NODEJS_URL="https://nodejs.org/dist/$NODEJS_VERSION/node-$NODEJS_VERSION-linux-s390x.tar.xz"
 MAVEN_VERSION='3.9.11'
-TEST_UNUSED_VERSION='99.99.99'
 MAVEN_URL="https://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz"
 ANTLR_SOURCE_URL="https://github.com/antlr/$PACKAGE_NAME/archive/$PACKAGE_VERSION.zip"
 
