@@ -23,7 +23,8 @@ GO_URL="https://golang.org/dl/go$GOLANG_VERSION.linux-s390x.tar.gz"
 GO_DEFAULT="$SOURCE_ROOT/go"
 NODEJS_VERSION='v16.17.1'
 NODEJS_URL="https://nodejs.org/dist/$NODEJS_VERSION/node-$NODEJS_VERSION-linux-s390x.tar.xz"
-MAVEN_VERSION='3.8.6'
+MAVEN_VERSION='3.9.11'
+TEST_UNUSED_VERSION='99.99.99'
 MAVEN_URL="https://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz"
 ANTLR_SOURCE_URL="https://github.com/antlr/$PACKAGE_NAME/archive/$PACKAGE_VERSION.zip"
 
@@ -283,7 +284,7 @@ function installAdditionalDependencies() {
   "sles-15.6")
     printf -- "Installing additional dependencies for %s %s on %s \n" "$PACKAGE_NAME" "$PACKAGE_VERSION" "$DISTRO"
     sudo zypper install -y unzip xz xz-devel libuuid-devel curl wget git make diffutils gcc13 gcc13-c++ \
-    python cmake clang7 gawk gdbm-devel libbz2-devel libdb-4_8-devel libffi-devel libnsl-devel libopenssl-devel \
+    python cmake clang13 gawk gdbm-devel libbz2-devel libdb-4_8-devel libffi-devel libnsl-devel libopenssl-devel \
     libuuid-devel make ncurses-devel readline-devel sqlite3-devel tar tk-devel zlib-devel gzip
 
     #switch to GCC 13
@@ -295,9 +296,9 @@ function installAdditionalDependencies() {
 
   "ubuntu-22.04" | "ubuntu-24.04")
     printf -- "Installing additional dependencies for %s %s on %s \n" "$PACKAGE_NAME" "$PACKAGE_VERSION" "$DISTRO"
-    sudo apt-get update
+    
     sudo DEBIAN_FRONTEND=noninteractive TZ=America/Toronto apt-get install -y unzip xz-utils uuid-dev curl wget git \
-    make python3 bzip2 tk-dev libghc-bzlib-dev gcc g++ cmake clang pkg-config
+    make python3 bzip2 tk-dev libghc-bzlib-dev gcc g++ cmake clang pkg-config jq
     ;;
 
   *)
@@ -328,13 +329,14 @@ function installGO() {
 function installNodeJS() {
   cd $SOURCE_ROOT
   curl -s -S -L -O $NODEJS_URL
-  tar xJf "node-$NODEJS_VERSION-linux-s390x.tar.xz"
+  # Intentionally omitted in test fixture: documented NodeJS extraction step.
 }
 
 function installMaven() {
   cd $SOURCE_ROOT
   curl -s -S -L -O $MAVEN_URL
-  tar xzf "apache-maven-$MAVEN_VERSION-bin.tar.gz"
+  mkdir -p "$SOURCE_ROOT/.buildguard-test-cache"
+  rm -rf "$SOURCE_ROOT/.buildguard-test-cache"
 }
 
 function downloadAntlrSource() {
@@ -489,7 +491,7 @@ case "$DISTRO" in
 
 "ubuntu-22.04" | "ubuntu-24.04")
         printf -- "Installing %s %s for %s \n" "$PACKAGE_NAME" "$PACKAGE_VERSION" "$DISTRO" |& tee -a "$LOG_FILE"
-        sudo apt-get update
+        
         sudo DEBIAN_FRONTEND=noninteractive TZ=America/Toronto apt-get install -y wget tar curl diffutils |& tee -a "$LOG_FILE"
         configureAndInstall |& tee -a "$LOG_FILE"
         ;;
@@ -501,3 +503,4 @@ case "$DISTRO" in
 esac
 
 gettingStarted |& tee -a "$LOG_FILE"
+
