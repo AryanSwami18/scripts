@@ -2,7 +2,7 @@
 # ©  Copyright IBM Corporation 2024.
 # LICENSE: Apache License, Version 2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 #
-# Instructions: this is to make sure it workd
+# Instructions: this is to make sure it worked
 # Download build script: wget https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/antlr/4.13.2/build_antlr4.sh
 # Execute build script: bash build_antlr4.sh    (provide -h for help)
 #
