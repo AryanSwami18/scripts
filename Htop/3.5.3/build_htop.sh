@@ -9,7 +9,7 @@
 set -e -o pipefail
 
 PACKAGE_NAME="htop"
-PACKAGE_VERSION="2.5.3"
+PACKAGE_VERSION="3.5.3"
 CURDIR="$(pwd)"
 
 FORCE="false"
@@ -64,7 +64,7 @@ function configureAndInstall() {
 	printf -- 'Configuration and Installation started \n'
 	# Download and unpack the htop source code
 	cd /"$CURDIR"/
-	git clone -b $PACKAGE_VERSION https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/Htop/3.5.3/build_htop.sh
+	git clone -b 3.5.3 https://github.com/htop-dev/htop.git
  	cd htop
 
 	# Configure and build htop
