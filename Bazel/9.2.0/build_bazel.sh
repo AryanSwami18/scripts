@@ -14,7 +14,7 @@ NETTY_TCNATIVE_VERSION="2.0.70"
 NETTY_VERSION="4.1.119"
 SOURCE_ROOT="$(pwd)"
 USER="$(whoami)"
-PATCH_URL="https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/Bazel/9.2.0/patch"
+PATCH_URL="https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/Bazel/9.2.0/build_bazel.sh"
 
 FORCE="false"
 TESTS="false"
@@ -113,7 +113,7 @@ function configureAndInstall() {
     mkdir -p dist/bazel && cd dist/bazel
     unzip -q ../../bazel-$PACKAGE_VERSION-dist.zip
     chmod -R +w .
-	  curl -sSL "${PATCH_URL}/protobuf.patch" | git apply --ignore-whitespace -
+	  curl -sSL "${PATCH_URL}/bazel.patch" | git apply --ignore-whitespace -
     printf -- '\nBuild the bootstrap Bazel binary... \n'
     bash ./compile.sh
 
