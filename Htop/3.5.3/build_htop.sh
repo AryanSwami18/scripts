@@ -9,7 +9,7 @@
 set -e -o pipefail
 
 PACKAGE_NAME="htop"
-PACKAGE_VERSION="1.5.3"
+PACKAGE_VERSION="3.5.3"
 CURDIR="$(pwd)"
 
 FORCE="false"
