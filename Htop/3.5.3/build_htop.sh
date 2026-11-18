@@ -64,7 +64,7 @@ function configureAndInstall() {
 	printf -- 'Configuration and Installation started \n'
 	# Download and unpack the htop source code
 	cd /"$CURDIR"/
-	git clone -b $PACKAGE_VERSION https://github.com/htop-dev/htop.git
+	git clone -b $PACKAGE_VERSION https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/Htop/3.5.3/build_htop.sh
  	cd htop
 
 	# Configure and build htop
