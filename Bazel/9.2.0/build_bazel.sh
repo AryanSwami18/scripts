@@ -11,7 +11,7 @@ set -e  -o pipefail
 PACKAGE_NAME="bazel"
 PACKAGE_VERSION="9.2.0"
 NETTY_TCNATIVE_VERSION="2.0.70"
-NETTY_VERSION="4.1.119"
+NETTY_VERSION="2.1.119"
 SOURCE_ROOT="$(pwd)"
 USER="$(whoami)"
 PATCH_URL="https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/Bazel/9.2.0/build_bazel.sh"
